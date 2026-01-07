@@ -1,30 +1,30 @@
 // Reels Climber - Instagram Scroll Tracker
 class ReelsClimber {
   constructor() {
-    this.totalScrollDistance = 0; // Toplam kaydırma mesafesi (piksel)
+    this.totalScrollDistance = 0; // Total scroll distance (pixels)
     this.lastScrollY = 0;
     this.metersClimbed = 0;
     this.currentLevel = 1;
     this.currentXP = 0;
     this.xpForNextLevel = 1000;
     this.totalScrolls = 0;
-    this.reelsViewed = 0; // Görüntülenen farklı reels sayısı
+    this.reelsViewed = 0; // Number of unique reels viewed
     this.lastReelsUrl = '';
-    this.userName = ''; // Leaderboard için kullanıcı adı
-    this.userID = ''; // Benzersiz kullanıcı ID'si (değişmez)
+    this.userName = ''; // Username for the leaderboard
+    this.userID = ''; // Unique user ID (permanent)
     
-    // Reels hız takibi ve ceza sistemi
-    this.reelsTimestamps = []; // Son 5 dakikadaki reels'ler
-    this.penaltyEndTime = 0; // Ceza bitiş zamanı (timestamp)
-    this.isPenalized = false; // Ceza durumu
+    // Reels speed tracking and penalty system
+    this.reelsTimestamps = []; // Reels viewed in the last 5 minutes
+    this.penaltyEndTime = 0; // Penalty end time (timestamp)
+    this.isPenalized = false; // Penalty status
     
-    // Piksel to metre çevirme faktörü (2x daha kolay: 1 metre ≈ 1890 piksel)
-    this.pixelsPerMeter = 1890;
+    // Pixel to meter conversion factor (1 meter ≈ 2000 pixels)
+    this.pixelsPerMeter = 2000;
     
     // Ses efektleri ayarı
     this.soundEnabled = true;
     
-    // Başarımlar tanımları
+    // Sound effects setting
     this.achievements = this.defineAchievements();
     this.unlockedAchievements = new Set();
     
