@@ -137,8 +137,10 @@ const DISTANCES = {
   'turkey-istanbul-newyork': 8050,
   // ... 90+ route distances
 };
+```
 
 ### Achievement Recalculation
+```
 // Route distance = 8674 km = 8,674,000 meters
 targetDistance = currentRoute.distance * 1000;
 
