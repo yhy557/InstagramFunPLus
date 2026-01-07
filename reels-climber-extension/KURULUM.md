@@ -59,7 +59,6 @@
    - Dashboard'dan ilerlemeyi kontrol et
 
 3. **Metre çok yavaş mı artıyor?**
-   - Artık 1 metre = 600 piksel (daha kolay!)
    - Aktif scroll yapman gerekiyor
 
 3. **Verileri sıfırlamak istiyorum**
