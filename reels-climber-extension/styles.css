@@ -1,0 +1,575 @@
+/* Reels Climber - Instagram Compatible Styles */
+/* Using system fonts to avoid CSP violations with Instagram's Content Security Policy */
+
+:root {
+  /* Color Palette - Mountain Adventure */
+  --summit-white: #F8FBFF;
+  --ice-blue: #D4E8FF;
+  --glacier-blue: #4A9EFF;
+  --deep-blue: #2563EB;
+  --mountain-gray: #3F3F46;
+  --dark-slate: #1E293B;
+  --sunset-orange: #FF6B35;
+  --gold-medal: #FFD700;
+  --success-green: #10B981;
+  --danger-red: #EF4444;
+  
+  /* Shadows & Effects */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 16px rgba(37, 99, 235, 0.15);
+  --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --glow-blue: 0 0 20px rgba(74, 158, 255, 0.5);
+  --glow-gold: 0 0 30px rgba(255, 215, 0, 0.6);
+  
+  /* Typography */
+  --font-display: 'Russo One', sans-serif;
+  --font-body: 'Exo 2', sans-serif;
+}
+
+/* Level Bar - Top Right Corner */
+#reels-climber-level-bar {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 999999;
+  font-family: var(--font-body);
+  pointer-events: none;
+}
+
+.level-container {
+  background: linear-gradient(135deg, var(--dark-slate) 0%, var(--mountain-gray) 100%);
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: var(--shadow-strong);
+  border: 2px solid rgba(74, 158, 255, 0.3);
+  backdrop-filter: blur(10px);
+  min-width: 280px;
+  animation: slideInFromTop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.level-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.level-badge {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold-medal);
+  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  letter-spacing: 1px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.meters-info {
+  font-size: 14px;
+  color: var(--ice-blue);
+  font-weight: 600;
+  background: rgba(74, 158, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.xp-bar-container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  height: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 158, 255, 0.3);
+}
+
+.xp-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--glacier-blue) 0%, var(--deep-blue) 50%, var(--sunset-orange) 100%);
+  border-radius: 14px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--glow-blue);
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.xp-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  line-height: 28px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--summit-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+/* Achievement Notification */
+.achievement-notification {
+  position: fixed;
+  top: 140px;
+  right: 20px;
+  z-index: 1000000;
+  opacity: 0;
+  transform: translateX(400px) rotate(5deg);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--font-body);
+}
+
+.achievement-notification.show {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+.achievement-content {
+  background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-strong), var(--glow-gold);
+  border: 3px solid var(--gold-medal);
+  min-width: 320px;
+  position: relative;
+  overflow: hidden;
+  animation: achievementPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.achievement-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes achievementPop {
+  0% {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.achievement-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+  animation: iconBounce 1s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.achievement-text {
+  flex: 1;
+}
+
+.achievement-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold-medal);
+  margin-bottom: 4px;
+  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  letter-spacing: 0.5px;
+}
+
+.achievement-desc {
+  font-size: 13px;
+  color: var(--ice-blue);
+  font-weight: 500;
+}
+
+.achievement-xp {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--sunset-orange);
+  text-shadow: 0 2px 8px rgba(255, 107, 53, 0.5);
+  font-weight: 800;
+  padding: 8px 16px;
+  background: rgba(255, 107, 53, 0.15);
+  border-radius: 12px;
+  border: 2px solid var(--sunset-orange);
+  animation: xpGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes xpGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+  }
+}
+
+/* Level Up Notification */
+.level-up-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 1000001;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--font-body);
+}
+
+.level-up-notification.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.level-up-content {
+  background: linear-gradient(135deg, var(--gold-medal) 0%, var(--sunset-orange) 100%);
+  border-radius: 24px;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--glow-gold);
+  border: 4px solid white;
+  animation: levelUpExplode 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes levelUpExplode {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.level-up-icon {
+  font-size: 80px;
+  animation: starSpin 2s linear infinite;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes starSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.level-up-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: white;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+  animation: textPulse 1s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.level-up-level {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--dark-slate);
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+  font-weight: 800;
+}
+
+/* Special Effects for Death Zone (85%+) */
+.death-zone-active #reels-climber-level-bar {
+  animation: dangerPulse 2s ease-in-out infinite;
+}
+
+@keyframes dangerPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3) hue-rotate(-10deg);
+  }
+}
+
+/* Mini Notification (for reels count) */
+.mini-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 1000000;
+  background: rgba(30, 41, 59, 0.95);
+  color: var(--ice-blue);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid rgba(74, 158, 255, 0.3);
+  box-shadow: var(--shadow-medium);
+}
+
+.mini-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Penalty Notification (spam prevention) */
+.penalty-notification {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%) translateX(400px);
+  z-index: 1000001;
+  background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.6);
+  border: 3px solid var(--danger-red);
+  min-width: 320px;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--font-body);
+}
+
+.penalty-notification.show {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.penalty-timer-circle {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(var(--danger-red) 100%, rgba(239, 68, 68, 0.2) 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
+  animation: pulsePenalty 2s ease-in-out infinite;
+}
+
+@keyframes pulsePenalty {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 12px 32px rgba(239, 68, 68, 0.6);
+  }
+}
+
+.penalty-timer-circle::before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);
+}
+
+.penalty-timer-text {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: white;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.penalty-content {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.penalty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.penalty-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: white;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.penalty-desc {
+  font-size: 13px;
+  color: #FCA5A5;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.penalty-info {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  color: white;
+  line-height: 1.8;
+}
+
+.penalty-negative {
+  color: #FCA5A5;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #reels-climber-level-bar {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .level-container {
+    min-width: 220px;
+    padding: 10px 16px;
+  }
+  
+  .level-badge {
+    font-size: 14px;
+  }
+  
+  .achievement-notification {
+    top: 90px;
+    right: 10px;
+  }
+  
+  .achievement-content {
+    min-width: 280px;
+    padding: 12px 16px;
+  }
+  
+  .achievement-icon {
+    font-size: 40px;
+  }
+  
+  .achievement-title {
+    font-size: 14px;
+  }
+  
+  .achievement-xp {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+  
+  .level-up-content {
+    padding: 30px 40px;
+  }
+  
+  .level-up-icon {
+    font-size: 60px;
+  }
+  
+  .level-up-title {
+    font-size: 24px;
+  }
+  
+  .level-up-level {
+    font-size: 36px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reels Climber Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Russo+One&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 420px;
+      min-height: 600px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+      color: #F8FBFF;
+      padding: 24px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid rgba(74, 158, 255, 0.3);
+    }
+    
+    .header h1 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      color: #FFD700;
+      text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    
+    .header .subtitle {
+      font-size: 14px;
+      color: #D4E8FF;
+      font-weight: 500;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(74, 158, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .stat-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    
+    .stat-value {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      color: #4A9EFF;
+      margin-bottom: 4px;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .progress-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+    }
+    
+    .progress-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #FFD700;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    
+    .everest-path-container {
+      width: 100%;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    
+    .everest-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    }
+    
+    #climber-circle {
+      filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.8));
+      animation: climberPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes climberPulse {
+      0%, 100% { r: 8; }
+      50% { r: 10; }
+    }
+    
+    .progress-text {
+      text-align: center;
+      font-size: 14px;
+      color: #D4E8FF;
+      margin-bottom: 8px;
+    }
+    
+    .progress-bar {
+      background: rgba(0, 0, 0, 0.4);
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4A9EFF 0%, #2563EB 50%, #FF6B35 100%);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      background-size: 200% 100%;
+      animation: shimmer 2s linear infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .progress-percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 700;
+      font-size: 13px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    .achievements-section {
+      margin-top: 24px;
+    }
+    
+    .section-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #FFD700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .settings-section {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+    }
+    
+    .setting-item {
+      margin-bottom: 16px;
+    }
+    
+    .setting-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .toggle-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: #D4E8FF;
+      font-weight: 600;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(100, 116, 139, 0.5);
+      transition: 0.4s;
+      border-radius: 26px;
+    }
+    
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .toggle-slider {
+      background-color: #4A9EFF;
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+    }
+    
+    .setting-label {
+      display: block;
+      font-size: 14px;
+      color: #D4E8FF;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .mountain-select {
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 8px;
+      color: #F8FBFF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .mountain-select:hover {
+      border-color: #4A9EFF;
+      background: rgba(30, 41, 59, 0.9);
+    }
+    
+    .mountain-select:focus {
+      outline: none;
+      border-color: #FFD700;
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    }
+    
+    .mountain-select option {
+      background: #1E293B;
+      color: #F8FBFF;
+    }
+    
+    .username-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 8px;
+      color: #F8FBFF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .username-input:hover {
+      border-color: #4A9EFF;
+      background: rgba(30, 41, 59, 0.9);
+    }
+    
+    .username-input:focus {
+      outline: none;
+      border-color: #FFD700;
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    }
+    
+    .username-input::placeholder {
+      color: #64748B;
+    }
+    
+    .save-username-btn {
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #4A9EFF 0%, #2563EB 100%);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+    
+    .save-username-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 158, 255, 0.4);
+    }
+    
+    .save-username-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: linear-gradient(135deg, #64748B 0%, #475569 100%);
+    }
+    
+    .save-username-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+    
+    .leaderboard-section {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+    }
+    
+    .leaderboard-container {
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    
+    .leaderboard-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .leaderboard-container::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+    }
+    
+    .leaderboard-container::-webkit-scrollbar-thumb {
+      background: #4A9EFF;
+      border-radius: 3px;
+    }
+    
+    .leaderboard-info {
+      text-align: center;
+      color: #94A3B8;
+      font-size: 13px;
+      padding: 20px;
+      font-style: italic;
+    }
+    
+    .leaderboard-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 8px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .leaderboard-item:hover {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: #4A9EFF;
+      transform: translateX(4px);
+    }
+    
+    .leaderboard-item.current-user {
+      background: rgba(255, 215, 0, 0.15);
+      border-color: #FFD700;
+    }
+    
+    .leaderboard-item.top-3 {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 53, 0.1) 100%);
+      border-color: #FFD700;
+    }
+    
+    .leaderboard-rank {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #FFD700;
+      min-width: 30px;
+      text-align: center;
+    }
+    
+    .leaderboard-info-col {
+      flex: 1;
+      margin-left: 12px;
+    }
+    
+    .leaderboard-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: #F8FBFF;
+      margin-bottom: 2px;
+    }
+    
+    .leaderboard-stats {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+    
+    .leaderboard-meters {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      color: #4A9EFF;
+      font-weight: 700;
+    }
+    
+    .destination-section {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+    }
+    
+    .route-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .route-selector {
+      flex: 1;
+    }
+    
+    .route-arrow {
+      font-size: 24px;
+      margin-top: 24px;
+      animation: flyAnimation 2s ease-in-out infinite;
+    }
+    
+    @keyframes flyAnimation {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+    }
+    
+    .country-select, .city-select {
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 8px;
+      color: #F8FBFF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+    
+    .country-select:hover, .city-select:hover:not(:disabled) {
+      border-color: #4A9EFF;
+      background: rgba(30, 41, 59, 0.9);
+    }
+    
+    .country-select:focus, .city-select:focus {
+      outline: none;
+      border-color: #FFD700;
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    }
+    
+    .city-select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .route-info {
+      background: rgba(74, 158, 255, 0.1);
+      border: 2px solid rgba(74, 158, 255, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .route-distance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .distance-label {
+      font-size: 13px;
+      color: #D4E8FF;
+      font-weight: 600;
+    }
+    
+    .distance-value {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: #FFD700;
+      text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+    }
+    
+    .set-route-button {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, #4A9EFF 0%, #2563EB 100%);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+    
+    .set-route-button:hover {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 158, 255, 0.4);
+    }
+    
+    .current-route {
+      background: rgba(255, 215, 0, 0.1);
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    
+    .route-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .route-badge-icon {
+      font-size: 32px;
+    }
+    
+    .route-badge-info {
+      flex: 1;
+    }
+    
+    .route-badge-title {
+      font-size: 11px;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    
+    .route-badge-path {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #FFD700;
+      margin-bottom: 2px;
+    }
+    
+    .route-badge-distance {
+      font-size: 12px;
+      color: #D4E8FF;
+      font-weight: 600;
+    }
+    
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+    
+    .achievements-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .achievements-grid::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+    }
+    
+    .achievements-grid::-webkit-scrollbar-thumb {
+      background: #4A9EFF;
+      border-radius: 3px;
+    }
+    
+    .achievement-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .achievement-item.unlocked {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: #FFD700;
+    }
+    
+    .achievement-item.locked {
+      opacity: 0.4;
+      filter: grayscale(100%);
+    }
+    
+    .achievement-item:hover {
+      transform: scale(1.05);
+    }
+    
+    .achievement-item:hover .achievement-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .achievement-tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+      color: #F8FBFF;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      white-space: nowrap;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      pointer-events: none;
+      border: 2px solid #FFD700;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      min-width: 150px;
+      max-width: 250px;
+      text-align: center;
+    }
+    
+    .achievement-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #FFD700;
+    }
+    
+    .tooltip-title {
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+    
+    .tooltip-desc {
+      color: #D4E8FF;
+      font-size: 10px;
+      margin-bottom: 4px;
+    }
+    
+    .tooltip-requirement {
+      color: #94A3B8;
+      font-size: 10px;
+      font-style: italic;
+    }
+    
+    .achievement-icon-small {
+      font-size: 32px;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    
+    .achievement-name {
+      font-size: 11px;
+      color: #D4E8FF;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    
+    .reset-button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .reset-button:hover {
+      background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(74, 158, 255, 0.2);
+      font-size: 12px;
+      color: #94A3B8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🏔️ Reels Climber</h1>
+    <p class="subtitle">Instagram Everest Challenge</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📏</div>
+      <div class="stat-value" id="total-meters">0m</div>
+      <div class="stat-label">Toplam Mesafe</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-value" id="current-level">1</div>
+      <div class="stat-label">Seviye</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎬</div>
+      <div class="stat-value" id="reels-viewed">0</div>
+      <div class="stat-label">Reels İzlendi</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-value" id="achievements-count">0/20</div>
+      <div class="stat-label">Başarımlar</div>
+    </div>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-title">Everest İlerlemesi</div>
+    
+    <!-- SVG Path Animation -->
+    <div class="everest-path-container">
+      <svg viewBox="0 0 300 400" class="everest-svg">
+        <defs>
+          <linearGradient id="pathGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#94A3B8;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#64748B;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#F8FBFF;stop-opacity:1" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        
+        <!-- Mountain Background -->
+        <path d="M 0 400 L 150 50 L 300 400 Z" fill="url(#pathGradient)" opacity="0.3"/>
+        
+        <!-- Climbing Path (gri) -->
+        <path id="climbing-path" 
+              d="M 150 380 Q 120 350, 130 320 Q 140 290, 120 260 Q 100 230, 130 200 Q 160 170, 140 140 Q 120 110, 150 80" 
+              stroke="#475569" 
+              stroke-width="3" 
+              fill="none" 
+              stroke-dasharray="5,5"/>
+        
+        <!-- Completed Path (turuncu) -->
+        <path id="completed-path" 
+              d="M 150 380 Q 120 350, 130 320 Q 140 290, 120 260 Q 100 230, 130 200 Q 160 170, 140 140 Q 120 110, 150 80" 
+              stroke="#FF6B35" 
+              stroke-width="4" 
+              fill="none" 
+              stroke-linecap="round"
+              stroke-dasharray="1000"
+              stroke-dashoffset="1000"
+              filter="url(#glow)"
+              style="transition: stroke-dashoffset 1s ease-out;"/>
+        
+        <!-- Climber Circle -->
+        <circle id="climber-circle" r="8" fill="#FFD700" stroke="#1E293B" stroke-width="2">
+          <animateMotion 
+            dur="0s" 
+            begin="indefinite"
+            fill="freeze"
+            keyPoints="0;0"
+            keyTimes="0;1"
+            calcMode="linear">
+            <mpath href="#climbing-path"/>
+          </animateMotion>
+        </circle>
+        
+        <!-- Summit Flag -->
+        <g transform="translate(150, 80)">
+          <line x1="0" y1="0" x2="0" y2="-20" stroke="#FFD700" stroke-width="2"/>
+          <path d="M 0 -20 L 15 -15 L 0 -10 Z" fill="#EF4444"/>
+          <text x="20" y="-10" font-size="12" fill="#F8FBFF" font-weight="bold">8848m</text>
+        </g>
+        
+        <!-- Base Camp -->
+        <text x="150" y="395" font-size="11" fill="#94A3B8" text-anchor="middle">Baz Kampı</text>
+      </svg>
+    </div>
+    
+    <p class="progress-text" id="progress-text">Tırmanışa hazırlan!</p>
+    <div class="progress-bar">
+      <div class="progress-bar-fill" id="everest-progress-fill" style="width: 0%"></div>
+      <span class="progress-percentage" id="everest-percentage">0%</span>
+    </div>
+  </div>
+
+  <div class="achievements-section">
+    <div class="section-title">
+      <span>🏅</span>
+      <span>Başarımlar</span>
+    </div>
+    <div class="achievements-grid" id="achievements-grid">
+      <!-- Achievements will be populated by JavaScript -->
+    </div>
+  </div>
+
+  <div class="settings-section">
+    <div class="section-title">
+      <span>⚙️</span>
+      <span>Ayarlar</span>
+    </div>
+    
+    <div class="setting-item">
+      <label class="setting-label">👤 Kullanıcı Adın (Leaderboard için)</label>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <input type="text" id="username-input" class="username-input" placeholder="Adını gir..." maxlength="20">
+        <button id="save-username-btn" class="save-username-btn" disabled>💾 Kaydet</button>
+      </div>
+    </div>
+    
+    <div class="setting-item">
+      <label class="toggle-label">
+        <span>🔊 Ses Efektleri</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="sound-toggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <div class="destination-section">
+    <div class="section-title">
+      <span>🌍</span>
+      <span>Rotanı Seç</span>
+    </div>
+    
+    <div class="route-container">
+      <div class="route-selector">
+        <label class="setting-label">🚀 Başlangıç Noktası</label>
+        <select id="start-country" class="country-select">
+          <option value="">Ülke seç...</option>
+          <option value="turkey">🇹🇷 Türkiye</option>
+          <option value="norway">🇳🇴 Norveç</option>
+          <option value="switzerland">🇨🇭 İsviçre</option>
+          <option value="japan">🇯🇵 Japonya</option>
+          <option value="usa">🇺🇸 Amerika</option>
+          <option value="germany">🇩🇪 Almanya</option>
+        </select>
+        
+        <select id="start-city" class="city-select" disabled>
+          <option value="">Önce ülke seç...</option>
+        </select>
+      </div>
+      
+      <div class="route-arrow">✈️</div>
+      
+      <div class="route-selector">
+        <label class="setting-label">🎯 Varış Noktası</label>
+        <select id="end-country" class="country-select">
+          <option value="">Ülke seç...</option>
+          <option value="turkey">🇹🇷 Türkiye</option>
+          <option value="norway">🇳🇴 Norveç</option>
+          <option value="switzerland">🇨🇭 İsviçre</option>
+          <option value="japan">🇯🇵 Japonya</option>
+          <option value="usa">🇺🇸 Amerika</option>
+          <option value="germany">🇩🇪 Almanya</option>
+        </select>
+        
+        <select id="end-city" class="city-select" disabled>
+          <option value="">Önce ülke seç...</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="route-info" id="route-info" style="display: none;">
+      <div class="route-distance">
+        <span class="distance-label">Toplam Mesafe:</span>
+        <span class="distance-value" id="route-distance">0 km</span>
+      </div>
+      <button class="set-route-button" id="set-route-button">🎯 Bu Rotayı Hedefle!</button>
+    </div>
+    
+    <div class="current-route" id="current-route" style="display: none;">
+      <div class="route-badge">
+        <span class="route-badge-icon">🗺️</span>
+        <div class="route-badge-info">
+          <div class="route-badge-title">Aktif Rota</div>
+          <div class="route-badge-path" id="current-route-path">Ankara → Tokyo</div>
+          <div class="route-badge-distance" id="current-route-distance">8,674 km</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="leaderboard-section">
+    <div class="section-title">
+      <span>🏆</span>
+      <span>Liderlik Tablosu</span>
+      <span style="margin-left: 8px; font-size: 10px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 2px 8px; border-radius: 4px; color: white;">☁️ ONLINE</span>
+    </div>
+    <div class="leaderboard-container" id="leaderboard-container">
+      <div class="leaderboard-info">Kullanıcı adını girerek leaderboard'a katıl!</div>
+    </div>
+  </div>
+
+  <button class="reset-button" id="reset-button">🔄 İlerlemeyi Sıfırla</button>
+
+  <div class="footer">
+    <p>Instagram Reels'i kaydırarak Everest'e tırman! 🚀</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
