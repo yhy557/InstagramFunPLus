@@ -1,6 +1,5 @@
-# 🆕 Yeni Özellikler v4.0
 
-## ✨ Eklenen Özellikler
+✨ Özellikler
 
 ### 1. 🎨 Başarım Tooltip'leri
 Başarım kartlarının üzerine mouse ile geldiğinizde artık güzel bir balon çıkıyor!
