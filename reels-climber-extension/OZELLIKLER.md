@@ -171,34 +171,6 @@ chrome.storage.local.set({
 
 ---
 
-## 📖 Kullanım Senaryoları
-
-### Senaryo 1: Kısa Challenge
-```
-1. Bern → Zürich seç (310 km)
-2. Hedef: 310,000 metre
-3. %5 başarım: 15,500 m = 15.5 km
-4. Scroll yap ve hızlıca tamamla!
-```
-
-### Senaryo 2: Orta Challenge
-```
-1. Berlin → Ankara seç (2,100 km)
-2. Hedef: 2,100,000 metre
-3. %25 başarım: 525 km
-4. Birkaç gün içinde tamamlanabilir
-```
-
-### Senaryo 3: Epic Challenge
-```
-1. Ankara → Tokyo seç (8,674 km)
-2. Hedef: 8,674,000 metre
-3. %50 başarım: 4,337 km
-4. Haftalarca scroll gerekir!
-```
-
----
-
 ## 🎮 Lider Tablosunda'da Rotalar
 
 Lider Tablosunda'da artık hangi rotayı tamamladığını gösterebilirsin:
