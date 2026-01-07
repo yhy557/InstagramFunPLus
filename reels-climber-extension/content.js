@@ -40,7 +40,7 @@ class ReelsClimber {
     const EVEREST_HEIGHT = 8848; // meters
     
     return [
-      // Everest Başarımları
+      // Everest achievements
       { id: 'base_camp', distance: EVEREST_HEIGHT * 0.05, name: 'Baz Kampı Hazırlığı', xp: 500, icon: '⛺', description: '442m tamamlandı!' },
       { id: 'slope_start', distance: EVEREST_HEIGHT * 0.10, name: 'Yokuş Başladı', xp: 750, icon: '🥾', description: '884m - İlk ekipmanını kuşan' },
       { id: 'oxygen_drop', distance: EVEREST_HEIGHT * 0.15, name: 'Oksijen Seviyesi Düşüyor', xp: 1000, icon: '😮‍💨', description: '1.327m - Nefes almak zorlaşıyor' },
@@ -74,10 +74,9 @@ class ReelsClimber {
       { id: 'persistent', special: 'daily', threshold: 7, name: 'Azimli', xp: 5000, icon: '🔗', description: '7 gün üst üste scroll yaptın!' },
       { id: 'veteran', special: 'daily', threshold: 30, name: 'Veteran', xp: 15000, icon: '⭐', description: '30 gün üst üste aktif!' },
       
-      // GİZLİ BAŞARIMLAR (hidden: true - popup'ta gösterilmez)
-      // Kullanıcı bunları bilmeyecek, sadece kazanınca ortaya çıkacak!
+      // SECRET ACHIEVEMENTS (hidden: true - not shown in popup))
       
-      // Instagram aktivite başarımları
+      // Instagram activity achievements
       { id: 'social_butterfly', special: 'instagram', threshold: 'story_view', name: '???', xp: 2000, icon: '🦋', description: '???', hidden: true, revealName: 'Sosyal Kelebek', revealDesc: 'İlk story görüntülemen!' },
       { id: 'heart_giver', special: 'instagram', threshold: 'like', name: '???', xp: 1500, icon: '❤️', description: '???', hidden: true, revealName: 'Kalp Dağıtıcı', revealDesc: 'Reels izlerken like attın!' },
       { id: 'comment_king', special: 'instagram', threshold: 'comment', name: '???', xp: 2500, icon: '💬', description: '???', hidden: true, revealName: 'Yorum Kralı', revealDesc: 'İlk yorumunu yaptın!' },
@@ -86,12 +85,12 @@ class ReelsClimber {
       { id: 'dm_sender', special: 'instagram', threshold: 'dm', name: '???', xp: 2000, icon: '✉️', description: '???', hidden: true, revealName: 'Mesaj Göndericisi', revealDesc: 'Mesaj attın!' },
       { id: 'search_detective', special: 'instagram', threshold: 'search', name: '???', xp: 1000, icon: '🔍', description: '???', hidden: true, revealName: 'Arama Dedektifi', revealDesc: 'Arama yaptın!' },
       
-      // Zaman bazlı gizli başarımlar
+      // Time-based secret achievements
       { id: 'midnight_warrior', special: 'time', threshold: 'midnight', name: '???', xp: 5000, icon: '🌃', description: '???', hidden: true, revealName: 'Gece Yarısı Savaşçısı', revealDesc: 'Tam gece yarısı (00:00-01:00) aktiftin!' },
       { id: 'sunrise_chaser', special: 'time', threshold: 'sunrise', name: '???', xp: 4000, icon: '🌄', description: '???', hidden: true, revealName: 'Gündoğumu Avcısı', revealDesc: 'Gün doğarken (05:00-06:00) aktiftin!' },
       { id: 'workday_warrior', special: 'time', threshold: 'workday', name: '???', xp: 3000, icon: '💼', description: '???', hidden: true, revealName: 'Mesai Savaşçısı', revealDesc: 'Çalışma saatlerinde (09:00-17:00) scroll yaptın!' },
       
-      // Davranış bazlı gizli başarımlar
+      // Behavior-based secret achievements
       { id: 'no_penalty', special: 'behavior', threshold: 'clean_week', name: '???', xp: 10000, icon: '😇', description: '???', hidden: true, revealName: 'Mükemmel Kullanıcı', revealDesc: '7 gün hiç ceza almadın!' },
       { id: 'comeback_kid', special: 'behavior', threshold: 'penalty_survived', name: '???', xp: 2000, icon: '💪', description: '???', hidden: true, revealName: 'Geri Dönen', revealDesc: 'Ceza aldıktan sonra normal kullanıma döndün!' },
       { id: 'speed_limit', special: 'behavior', threshold: 'slow_scroll', name: '???', xp: 5000, icon: '🐢', description: '???', hidden: true, revealName: 'Ağırdan Alan', revealDesc: '1 saatte 20 Reels\'ten az izledin (sağlıklı kullanım!)' },
@@ -99,7 +98,7 @@ class ReelsClimber {
       { id: 'level_ten', special: 'level', threshold: 10, name: '???', xp: 8000, icon: '🏅', description: '???', hidden: true, revealName: 'Seviye 10!', revealDesc: '10. seviyeye ulaştın!' },
       { id: 'level_twenty', special: 'level', threshold: 20, name: '???', xp: 20000, icon: '👑', description: '???', hidden: true, revealName: 'Seviye 20!', revealDesc: 'Efsane seviyeye ulaştın!' },
       
-      // Şanslı/Rastgele başarımlar
+      // Lucky/Random achievements
       { id: 'lucky_seven', special: 'lucky', threshold: 'reels_777', name: '???', xp: 7777, icon: '🎰', description: '???', hidden: true, revealName: 'Şanslı Yedi', revealDesc: 'Tam 777. Reels\'ini izledin!' },
       { id: 'perfect_scroll', special: 'lucky', threshold: 'meter_1234', name: '???', xp: 1234, icon: '🎲', description: '???', hidden: true, revealName: 'Mükemmel Sayı', revealDesc: 'Tam 1234 metreye ulaştın!' },
       { id: 'first_kilometer', special: 'milestone', threshold: 1000, name: '???', xp: 5000, icon: '🥇', description: '???', hidden: true, revealName: 'İlk Kilometre!', revealDesc: '1 km tamamladın!' },
@@ -136,14 +135,14 @@ class ReelsClimber {
         this.reelsTimestamps = result.reelsTimestamps || [];
         this.penaltyEndTime = result.penaltyEndTime || 0;
         
-        // Ceza durumu kontrolü
+        // Penalty status check
         this.isPenalized = this.penaltyEndTime > Date.now();
         if (this.isPenalized) {
           console.log('⚠️ Ceza aktif! Bitiş:', new Date(this.penaltyEndTime).toLocaleTimeString());
           this.showPenaltyNotification();
         }
         
-        // UserID yoksa yeni oluştur (her tarayıcı için benzersiz ve kalıcı)
+        // If UserID doesn't exist, create a new one (unique and permanent for each browser)
         if (!result.userID) {
           this.userID = this.generateUserID();
           chrome.storage.local.set({ userID: this.userID });
@@ -156,7 +155,7 @@ class ReelsClimber {
         this.unlockedAchievements = new Set(result.unlockedAchievements || []);
         this.lastActiveDate = result.lastActiveDate || new Date().toDateString();
         
-        // Eğer rota varsa, başarımları rotaya göre ayarla
+        // If a route exists, set achievements based on the route
         if (this.currentRoute) {
           this.adjustAchievementsForRoute();
         }
@@ -168,13 +167,13 @@ class ReelsClimber {
   }
 
   adjustAchievementsForRoute() {
-    // Rota mesafesini km'den metreye çevir
+    // Convert route distance from km to meters
     const targetDistance = this.currentRoute.distance * 1000;
     
-    // Everest başarımlarını rotaya göre yeniden hesapla
+    // Recalculate Everest achievements according to the route
     this.achievements = this.achievements.map(achievement => {
       if (!achievement.special && achievement.id !== 'everest_conqueror') {
-        // Yüzdelik dilimi koru ama yeni mesafeye göre hesapla
+        // Maintain the percentage but calculate based on the new distance
         const percentage = achievement.distance / 8848;
         return {
           ...achievement,
@@ -182,7 +181,7 @@ class ReelsClimber {
           originalDistance: achievement.distance
         };
       }
-      // Son başarımı tam rota mesafesine ayarla
+      // Set the final achievement to the exact route distance
       if (achievement.id === 'everest_conqueror') {
         return {
           ...achievement,
@@ -199,27 +198,27 @@ class ReelsClimber {
   }
 
   async init() {
-    // Verileri yükle
+    // Load data
     await this.loadData();
     
-    // Level barını oluştur
+    // Create level bar
     this.createLevelBar();
     
-    // Instagram sidebar'a Leaderboard butonu ekle
+    // Add Leaderboard button to Instagram sidebar
     this.injectLeaderboardButton();
     
-    // Scroll listener'ı ekle
+    // Add scroll listener
     this.attachScrollListener();
     
-    // URL değişimini izle (Reels geçişleri için)
+    // Track URL changes (for Reels transitions)
     this.trackReelsChanges();
     
-    // Instagram aktivitelerini izle
+    // Track Instagram activities
     this.trackInstagramActivities();
     
-    // Periyodik kontroller
-    setInterval(() => this.checkTimeBasedAchievements(), 60000); // Her dakika
-    setInterval(() => this.checkBehaviorAchievements(), 300000); // Her 5 dakika
+    // Periodic checks
+    setInterval(() => this.checkTimeBasedAchievements(), 60000); // Every minute
+    setInterval(() => this.checkBehaviorAchievements(), 300000); // Every 5 minutes
     
     console.log('🏔️ Reels Climber aktif! Everest\'e tırmanmaya başla!');
     console.log('📊 Mevcut metre:', this.metersClimbed.toFixed(2), 'm');
@@ -227,19 +226,19 @@ class ReelsClimber {
   }
 
   injectLeaderboardButton() {
-    // Instagram sidebar'ına Leaderboard butonu ekle
+    // Add Leaderboard button to Instagram sidebar
     const checkAndInject = () => {
-      // Zaten eklenmişse tekrar ekleme
+      // Do not re-add if already exists
       if (document.getElementById('reels-climber-leaderboard-btn')) {
         return;
       }
       
-      // Instagram nav container'ını bul
-      // Profil linkini içeren parent'ı bul
+      // Find Instagram nav container
+      // Find the parent containing the profile link
       const profileLinks = Array.from(document.querySelectorAll('a[href*="/"][role="link"]'))
         .filter(link => {
           const href = link.getAttribute('href');
-          // Profil linki: username içerir ama /reels, /direct, /explore değildir
+          // Profile link: contains username but is not /reels, /direct, or /explore
           return href && 
                  href.includes('/') && 
                  !href.includes('/reels') && 
@@ -247,7 +246,7 @@ class ReelsClimber {
                  !href.includes('/explore') &&
                  !href.startsWith('#') &&
                  href !== '/' &&
-                 link.querySelector('img[alt*="profil"]'); // Profil resmi var
+                 link.querySelector('img[alt*="profil"]');
         });
       
       if (profileLinks.length === 0) {
@@ -256,7 +255,7 @@ class ReelsClimber {
       
       const profileLink = profileLinks[0];
       
-      // Profil item'ının en üst div'ini bul (span içindeki div)
+      // Find the top-level div of the profile item (the div inside the span)
       let profileItem = profileLink.closest('div.x1n2onr6');
       
       if (!profileItem) {
@@ -264,7 +263,7 @@ class ReelsClimber {
         return;
       }
       
-      // Profil item'ının parent container'ını bul
+      // Find the parent container of the profile item
       const parentContainer = profileItem.parentElement;
       
       if (!parentContainer) {
@@ -272,7 +271,7 @@ class ReelsClimber {
         return;
       }
       
-      // Leaderboard item'ı oluştur (Instagram'ın yapısına uygun)
+      // Create leaderboard item
       const leaderboardWrapper = document.createElement('div');
       
       const leaderboardSpan = document.createElement('span');
@@ -288,7 +287,7 @@ class ReelsClimber {
       leaderboardLink.setAttribute('role', 'link');
       leaderboardLink.setAttribute('tabindex', '0');
       
-      // İçeriği kopyala (Instagram'ın yapısına uygun)
+      // Copy content
       leaderboardLink.innerHTML = `
         <div class="x9f619 x3nfvp2 xr9ek0c xjpr12u xo237n4 x6pnmvc x7nr27j x12dmmrz xz9dl7a xpdmqnj xsag5q8 x1g0dm76 x80pfx3 x159b3zp x1dn74xm xif99yt x172qv1o x4afuhf x1lhsz42 x10v4vz6 xdoji71 x1dejxi8 x9k3k5o x8st7rj x11hdxyr x1eunh74 x1wj20lx x1obq294 x5a5i1n xde0f50 x15x8krk">
           <div>
@@ -319,24 +318,24 @@ class ReelsClimber {
         this.showLeaderboardNotification();
       });
       
-      // Yapıyı birleştir
+      // Assemble the structure
       leaderboardDiv.appendChild(leaderboardLink);
       leaderboardSpan.appendChild(leaderboardDiv);
       leaderboardWrapper.appendChild(leaderboardSpan);
       
-      // Profil item'ından sonra ekle
+      // Insert after the profile item
       parentContainer.insertBefore(leaderboardWrapper, profileItem.nextSibling);
       
       console.log('🏆 Leaderboard butonu sidebar\'a eklendi!');
     };
     
-    // İlk denemede ekle
+    // Add on first attempt
     setTimeout(checkAndInject, 2000);
     
-    // Her 5 saniyede bir kontrol et (sidebar dinamik olabilir)
+    // Check every 5 seconds (sidebar may be dynamic)
     setInterval(checkAndInject, 5000);
     
-    // Sayfa yüklendiğinde de dene
+    // Also try when the page loads
     if (document.readyState === 'complete') {
       setTimeout(checkAndInject, 1000);
     } else {
@@ -347,18 +346,15 @@ class ReelsClimber {
   }
 
   showLeaderboardNotification() {
-    // Sidebar'da leaderboard panel'i aç (Instagram tarzı)
     this.showLeaderboardPanel();
   }
 
   showLeaderboardPanel() {
-    // Zaten açıksa kapat
     if (document.getElementById('reels-climber-leaderboard-panel')) {
       document.getElementById('reels-climber-leaderboard-panel').remove();
       return;
     }
     
-    // Panel container oluştur
     const panel = document.createElement('div');
     panel.id = 'reels-climber-leaderboard-panel';
     panel.style.cssText = `
@@ -375,7 +371,7 @@ class ReelsClimber {
       animation: slideInFromRight 0.3s ease-out;
     `;
     
-    // Storage'dan veri al
+    // Fetch data from storage
     chrome.storage.local.get(['leaderboardData', 'userID', 'metersClimbed', 'userName'], (result) => {
       const leaderboardData = result.leaderboardData || [];
       const userID = result.userID || '';
@@ -516,33 +512,31 @@ class ReelsClimber {
   }
 
   trackInstagramActivities() {
-    // Like, comment, share, story view gibi Instagram aktivitelerini izle
     
-    // Like butonu tıklaması
+    // Like button click
     document.addEventListener('click', (e) => {
       const target = e.target;
       
-      // Like butonu (kalp ikonu)
       if (target.closest('svg[aria-label*="Beğen"], svg[aria-label*="Like"]')) {
         this.unlockHiddenAchievement('heart_giver');
       }
       
-      // Share butonu
+      // Share button
       if (target.closest('svg[aria-label*="Paylaş"], svg[aria-label*="Share"]')) {
         this.unlockHiddenAchievement('share_master');
       }
       
-      // Comment butonu
+      // Comment button
       if (target.closest('svg[aria-label*="Yorum"], svg[aria-label*="Comment"]')) {
         this.unlockHiddenAchievement('comment_king');
       }
       
-      // Profil linki
+      // Profil link
       if (target.closest('a[href*="/"]') && target.closest('a[href*="/"]').href.match(/instagram\.com\/[^\/]+\/?$/)) {
         this.unlockHiddenAchievement('profile_stalker');
       }
       
-      // Story görüntüleme
+      // Story viewing
       if (target.closest('canvas') || target.closest('div[role="button"][tabindex="0"]')) {
         const url = window.location.href;
         if (url.includes('/stories/')) {
@@ -551,14 +545,14 @@ class ReelsClimber {
       }
     });
     
-    // Arama kullanımı
+    // Search usage
     document.addEventListener('focus', (e) => {
       if (e.target.matches('input[placeholder*="Ara"], input[type="search"]')) {
         this.unlockHiddenAchievement('search_detective');
       }
     }, true);
     
-    // DM sayfası ziyareti
+    // DM page visit
     const checkDM = () => {
       if (window.location.pathname.includes('/direct/')) {
         this.unlockHiddenAchievement('dm_sender');
@@ -570,9 +564,8 @@ class ReelsClimber {
   }
 
   unlockHiddenAchievement(achievementId) {
-    // Gizli başarımı aç
     if (this.unlockedAchievements.has(achievementId)) {
-      return; // Zaten açılmış
+      return;
     }
     
     const achievement = this.achievements.find(a => a.id === achievementId);
@@ -581,7 +574,6 @@ class ReelsClimber {
       this.unlockedAchievements.add(achievementId);
       this.gainXP(achievement.xp);
       
-      // Özel gizli başarım bildirimi göster
       this.showHiddenAchievementNotification(achievement);
       
       this.saveData();
@@ -635,10 +627,8 @@ class ReelsClimber {
       notification.style.opacity = '1';
     }, 100);
     
-    // Ses çal
     this.playAchievementSound();
     
-    // 5 saniye sonra kaybol
     setTimeout(() => {
       notification.style.top = '-150px';
       notification.style.opacity = '0';
@@ -647,26 +637,21 @@ class ReelsClimber {
   }
 
   checkBehaviorAchievements() {
-    // Davranış bazlı gizli başarımları kontrol et
     const now = Date.now();
     
-    // 7 gün hiç ceza almama
     if (!this.unlockedAchievements.has('no_penalty')) {
-      // Burada penalty history tutmamız gerekir, şimdilik basit kontrol
       if (this.metersClimbed > 5000 && this.penaltyEndTime === 0) {
         this.unlockHiddenAchievement('no_penalty');
       }
     }
     
-    // Cezadan dönme
+    // Recovery from penalty
     if (!this.unlockedAchievements.has('comeback_kid')) {
       if (this.penaltyEndTime > 0 && now > this.penaltyEndTime && !this.isPenalized) {
         this.unlockHiddenAchievement('comeback_kid');
       }
     }
     
-    // Yavaş scroll (sağlıklı kullanım)
-    // Son 1 saatte 20'den az Reels
     const oneHourAgo = now - (60 * 60 * 1000);
     const recentReels = this.reelsTimestamps.filter(t => t > oneHourAgo).length;
     if (recentReels > 0 && recentReels < 20 && !this.unlockedAchievements.has('speed_limit')) {
@@ -679,19 +664,17 @@ class ReelsClimber {
   }
 
   trackReelsChanges() {
-    // İlk reels URL'ini kaydet
+    // Save the first reels URL
     this.lastReelsUrl = window.location.href;
-    
-    // Eğer ilk kez açılıyorsa ve reels sayfasındaysa say
+
     if (this.reelsViewed === 0 && this.isReelsPage()) {
       this.reelsViewed = 1;
       this.reelsTimestamps.push(Date.now());
-      this.gainXP(10); // İlk Reels için +10 XP
+      this.gainXP(10);
       this.saveData();
       console.log('🎬 İlk Reels! Toplam:', this.reelsViewed, '+10 XP');
     }
     
-    // URL değişimlerini izle - daha sık kontrol
     let lastUrl = window.location.href;
     
     const checkUrlChange = () => {
@@ -701,7 +684,6 @@ class ReelsClimber {
         console.log('🔄 URL değişti:', currentUrl);
         lastUrl = currentUrl;
         
-        // Yeni bir reels görüntülendi
         if (currentUrl.includes('/reels/') && currentUrl !== this.lastReelsUrl) {
           this.lastReelsUrl = currentUrl;
           this.reelsViewed++;
@@ -716,18 +698,17 @@ class ReelsClimber {
           // Ceza kontrolü
           const reelsIn5Min = this.reelsTimestamps.length;
           
-          if (reelsIn5Min > 50) {
-            // Ceza moduna geç!
+          if (reelsIn5Min > 60) {
+            // nter penalty mode!
             if (!this.isPenalized) {
-              // İlk ceza
-              this.penaltyEndTime = now + (10 * 60 * 1000); // 10 dakika
+              this.penaltyEndTime = now + (10 * 60 * 1000); // 10 minute
               this.isPenalized = true;
               this.showPenaltyNotification();
               console.log('⚠️ CEZA! 5 dakikada 50+ reels! 10 dakika ceza başladı!');
             }
             
-            // Cezalı her reels
-            this.metersClimbed -= 1; // -1 metre
+            // Each reels during penalty
+            this.metersClimbed -= 1; // -1 meter
             if (this.metersClimbed < 0) this.metersClimbed = 0;
             
             this.currentXP -= 20; // -20 XP
@@ -736,7 +717,6 @@ class ReelsClimber {
             console.log(`🎬 Yeni Reels (CEZALI)! Toplam: ${this.reelsViewed} | -1m | -20 XP | ${reelsIn5Min}/50 5dk içinde`);
             this.showMiniNotification(`⚠️ Cezalısın! -1m -20XP`);
           } else {
-            // Normal bonus
             this.gainXP(10); // +10 XP bonus
             console.log(`🎬 Yeni Reels! Toplam: ${this.reelsViewed} | +10 XP | ${reelsIn5Min}/50 5dk içinde`);
           }
@@ -744,12 +724,12 @@ class ReelsClimber {
           this.updateLevelBar();
           this.saveData();
           
-          // Her 10 reels'te bir mini başarım
-          if (this.reelsViewed % 10 === 0) {
+          // Mini achievement for every 50 reels
+          if (this.reelsViewed % 50 === 0) {
             this.showMiniNotification(`🎬 ${this.reelsViewed} Reels izledin!`);
           }
           
-          // Ceza bitti mi kontrol et
+          // Check if the penalty is over
           if (this.isPenalized && now > this.penaltyEndTime) {
             this.isPenalized = false;
             this.penaltyEndTime = 0;
@@ -761,10 +741,8 @@ class ReelsClimber {
       }
     };
     
-    // Her 500ms'de bir kontrol et
     setInterval(checkUrlChange, 500);
     
-    // MutationObserver ile de dinle (daha hızlı tespit için)
     const urlObserver = new MutationObserver(checkUrlChange);
     urlObserver.observe(document.body, { 
       childList: true, 
@@ -835,7 +813,7 @@ class ReelsClimber {
         unlockedAchievements: Array.from(this.unlockedAchievements),
         lastActiveDate: new Date().toDateString()
       }, () => {
-        // Leaderboard'u güncelle (eğer kullanıcı adı VE userID varsa)
+        // Update leaderboard (if both username AND userID exist)
         if (this.userName && this.userID) {
           this.updateLeaderboard();
           console.log('🔄 Leaderboard otomatik güncellendi:', this.userName);
@@ -846,15 +824,14 @@ class ReelsClimber {
   }
 
   async updateLeaderboard() {
-    // Leaderboard verilerini hem local hem online güncelle
+    // Update leaderboard data both locally and online
     chrome.storage.local.get(['leaderboardData'], (result) => {
       let leaderboard = result.leaderboardData || [];
       
-      // Mevcut kullanıcıyı userID ile bul (userName değil!)
       const userIndex = leaderboard.findIndex(u => u.userID === this.userID);
       const userData = {
-        userID: this.userID, // Benzersiz ID (değişmez)
-        name: this.userName, // İsim (değişebilir)
+        userID: this.userID,
+        name: this.userName, 
         meters: Math.floor(this.metersClimbed),
         level: this.currentLevel,
         reels: this.reelsViewed,
@@ -863,39 +840,32 @@ class ReelsClimber {
       };
       
       if (userIndex >= 0) {
-        // Güncelle (aynı userID, sadece veriler değişir)
         leaderboard[userIndex] = userData;
         console.log('🔄 Leaderboard güncellendi:', this.userName);
       } else {
-        // Yeni ekle (ilk kez)
         leaderboard.push(userData);
         console.log('➕ Leaderboard\'a eklendi:', this.userName);
       }
       
-      // Sırala (metre sayısına göre)
       leaderboard.sort((a, b) => b.meters - a.meters);
       
-      // En fazla 100 kişi tut
       leaderboard = leaderboard.slice(0, 100);
       
-      // Local storage'a kaydet
+      // Save in local storage
       chrome.storage.local.set({ leaderboardData: leaderboard }, () => {
         console.log('💾 Leaderboard local storage\'a kaydedildi');
       });
       
-      // Online leaderboard'a kaydet (Chrome Storage Sync)
       this.syncToOnlineLeaderboard(userData);
     });
   }
 
   async syncToOnlineLeaderboard(userData) {
-    // Chrome Storage Sync kullanarak tüm cihazlar arası senkronizasyon
+    // Cross-device synchronization using Chrome Storage Sync
     try {
-      // Önce mevcut online leaderboard'u al
       chrome.storage.sync.get(['onlineLeaderboard'], (result) => {
         let onlineLeaderboard = result.onlineLeaderboard || [];
         
-        // Bu kullanıcıyı bul veya ekle
         const userIndex = onlineLeaderboard.findIndex(u => u.userID === userData.userID);
         
         if (userIndex >= 0) {
@@ -904,11 +874,9 @@ class ReelsClimber {
           onlineLeaderboard.push(userData);
         }
         
-        // Sırala ve sınırla
         onlineLeaderboard.sort((a, b) => b.meters - a.meters);
         onlineLeaderboard = onlineLeaderboard.slice(0, 100);
         
-        // Sync storage'a kaydet (tüm cihazlarda senkronize olur)
         chrome.storage.sync.set({ onlineLeaderboard: onlineLeaderboard }, () => {
           if (chrome.runtime.lastError) {
             console.warn('⚠️ Sync storage hatası:', chrome.runtime.lastError.message);
@@ -923,7 +891,7 @@ class ReelsClimber {
   }
 
   calculateXPForNextLevel() {
-    // Her 5 levelde bir zorlaşma
+    // Increase difficulty every 5 levels
     const levelGroup = Math.floor((this.currentLevel - 1) / 5);
     this.xpForNextLevel = 1000 * Math.pow(1.5, levelGroup);
   }
@@ -933,7 +901,7 @@ class ReelsClimber {
     let lastScrollPosition = 0;
     
     const handleScroll = (source = 'unknown') => {
-      // Instagram Reels'te birden fazla scroll container olabilir
+      // Instagram Reels may have multiple scroll containers
       let currentScrollPosition = 0;
       
       // 1. Window scroll
@@ -945,7 +913,7 @@ class ReelsClimber {
       // 3. Body scroll
       currentScrollPosition = Math.max(currentScrollPosition, document.body.scrollTop || 0);
       
-      // 4. Instagram'ın ana container'ı (varsa)
+      // 4. Instagram main container (if exists)
       const mainContainer = document.querySelector('main') || document.querySelector('[role="main"]');
       if (mainContainer) {
         currentScrollPosition = Math.max(currentScrollPosition, mainContainer.scrollTop || 0);
@@ -953,26 +921,24 @@ class ReelsClimber {
       
       const scrollDelta = Math.abs(currentScrollPosition - lastScrollPosition);
       
-      // Minimum scroll threshold (çok düşük)
       if (scrollDelta > 5) {
         this.totalScrollDistance += scrollDelta;
         const oldMeters = this.metersClimbed;
         this.metersClimbed = this.totalScrollDistance / this.pixelsPerMeter;
         this.totalScrolls++;
         
-        // Debug log - Her 1 metrede log
+        // Debug log - Log every 1 meter
         if (Math.floor(this.metersClimbed) > Math.floor(oldMeters)) {
           console.log('🏔️ Yeni metre!', Math.floor(this.metersClimbed), 'm (scroll delta:', scrollDelta, 'px, source:', source + ')');
         }
         
-        // Debug - Her scroll'da
+        // Debug - On every scroll
         console.log('📊 Scroll:', scrollDelta, 'px | Toplam:', this.totalScrollDistance, 'px | Metre:', this.metersClimbed.toFixed(2), 'm');
         
-        // Her scroll'da kontrol et
         this.checkAchievements();
         this.updateLevelBar();
         
-        // Veriyi kaydet (debounced)
+        // Save data (debounced)
         clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => {
           this.saveData();
@@ -988,7 +954,7 @@ class ReelsClimber {
     // 2. Document scroll event
     document.addEventListener('scroll', () => handleScroll('document'), { passive: true, capture: true });
     
-    // 3. Instagram'ın main container'ına listener ekle
+    // 3. Add listener to Instagram's main container
     const addMainContainerListener = () => {
       const mainContainer = document.querySelector('main') || document.querySelector('[role="main"]');
       if (mainContainer) {
@@ -997,16 +963,14 @@ class ReelsClimber {
       }
     };
     
-    // Hemen dene
     addMainContainerListener();
     
-    // Sayfa yüklendikten sonra tekrar dene (Instagram geç yüklenebilir)
+    // Retry after page load (Instagram may load slowly)
     setTimeout(addMainContainerListener, 1000);
     setTimeout(addMainContainerListener, 3000);
     
-    // 4. Wheel event (scroll wheel kullanımı için)
+    // 4. Wheel event (for scroll wheel usage)
     window.addEventListener('wheel', (e) => {
-      // Wheel delta'yı da scroll'a ekle
       const wheelDelta = Math.abs(e.deltaY);
       if (wheelDelta > 0) {
         this.totalScrollDistance += wheelDelta;
@@ -1027,7 +991,7 @@ class ReelsClimber {
       }
     }, { passive: true });
     
-    // 5. Touch events (mobil için)
+    // 5. Touch events (for mobile)
     let touchStartY = 0;
     window.addEventListener('touchstart', (e) => {
       touchStartY = e.touches[0].clientY;
@@ -1051,7 +1015,7 @@ class ReelsClimber {
       }
     }, { passive: true });
     
-    // İlk pozisyonu kaydet
+    // Save first position
     lastScrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
     
     console.log('✅ Scroll listener aktif! (window + document + wheel + touch)');
@@ -1061,17 +1025,17 @@ class ReelsClimber {
 
   checkAchievements() {
     this.achievements.forEach(achievement => {
-      // Zaten açılmışsa geç
+      
       if (this.unlockedAchievements.has(achievement.id)) return;
       
       let unlocked = false;
       
-      // Normal mesafe başarımları
+      
       if (!achievement.special && achievement.distance && this.metersClimbed >= achievement.distance) {
         unlocked = true;
       }
       
-      // Özel başarımlar
+      // Special achievements
       if (achievement.special === 'scrolls' && this.totalScrolls >= achievement.threshold) {
         unlocked = true;
       }
@@ -1081,7 +1045,6 @@ class ReelsClimber {
       }
       
       if (achievement.special === 'level' && this.currentLevel >= achievement.threshold) {
-        // Gizli seviye başarımı
         if (achievement.hidden) {
           this.unlockHiddenAchievement(achievement.id);
         } else {
@@ -1089,7 +1052,7 @@ class ReelsClimber {
         }
       }
       
-      // Kilometre milestone'ları (gizli)
+      // Kilometer milestones (hidden)
       if (achievement.special === 'milestone') {
         const meters = this.metersClimbed;
         if (achievement.threshold === 1000 && meters >= 1000 && meters < 1001) {
@@ -1100,7 +1063,7 @@ class ReelsClimber {
         }
       }
       
-      // Şanslı sayılar (gizli)
+      // Lucky numbers (hidden)
       if (achievement.special === 'lucky') {
         if (achievement.threshold === 'reels_777' && this.reelsViewed === 777) {
           this.unlockHiddenAchievement(achievement.id);
@@ -1126,7 +1089,7 @@ class ReelsClimber {
       if (this.unlockedAchievements.has(achievement.id)) return;
       
       if (achievement.special === 'time') {
-        // Normal zaman başarımları
+        // Normal time achievements
         if (achievement.threshold === 'night' && (hour >= 0 && hour < 6) && !achievement.hidden) {
           this.unlockAchievement(achievement);
         }
@@ -1134,7 +1097,7 @@ class ReelsClimber {
           this.unlockAchievement(achievement);
         }
         
-        // Gizli zaman başarımları
+        // Hidden time achievements
         if (achievement.threshold === 'midnight' && (hour === 0) && achievement.hidden) {
           this.unlockHiddenAchievement(achievement.id);
         }
@@ -1142,7 +1105,7 @@ class ReelsClimber {
           this.unlockHiddenAchievement(achievement.id);
         }
         if (achievement.threshold === 'workday' && (hour >= 9 && hour <= 17) && achievement.hidden) {
-          // Hafta içi mesai saatlerinde
+          // During weekday working hours
           const day = new Date().getDay();
           if (day >= 1 && day <= 5) {
             this.unlockHiddenAchievement(achievement.id);
@@ -1153,7 +1116,7 @@ class ReelsClimber {
   }
 
   unlockAchievement(achievement) {
-    // Normal başarımlar için
+    // For normal achievements
     if (!achievement.hidden) {
       this.unlockedAchievements.add(achievement.id);
       this.gainXP(achievement.xp);
@@ -1165,7 +1128,6 @@ class ReelsClimber {
   gainXP(amount) {
     this.currentXP += amount;
     
-    // Level atla
     while (this.currentXP >= this.xpForNextLevel) {
       this.currentXP -= this.xpForNextLevel;
       this.currentLevel++;
@@ -1322,10 +1284,8 @@ class ReelsClimber {
       notification.style.opacity = '1';
     }, 100);
     
-    // Ses efekti
     this.playAchievementSound();
     
-    // 4 saniye sonra kaldır
     setTimeout(() => {
       notification.style.top = '-100px';
       notification.style.opacity = '0';
@@ -1384,10 +1344,9 @@ class ReelsClimber {
   }
 
   playAchievementSound() {
-    // Ses kapalıysa çalma
     if (!this.soundEnabled) return;
     
-    // Web Audio API ile basit bir başarım sesi
+    // Simple achievement sound using Web Audio API
     try {
       const audioContext = new (window.AudioContext || window.webkitAudioContext)();
       const oscillator = audioContext.createOscillator();
@@ -1405,12 +1364,12 @@ class ReelsClimber {
       oscillator.start(audioContext.currentTime);
       oscillator.stop(audioContext.currentTime + 0.5);
     } catch (e) {
-      // Ses oynatma desteklenmiyorsa sessizce geç
+      // Fail silently if audio playback is not supported
     }
   }
 
   showPenaltyNotification() {
-    // Eski penalty notification varsa kaldır
+    // Remove old penalty notification if it exists
     this.hidePenaltyNotification();
     
     const notification = document.createElement('div');
@@ -1440,10 +1399,8 @@ class ReelsClimber {
     notification.appendChild(content);
     document.body.appendChild(notification);
     
-    // Timer'ı güncelle
     this.updatePenaltyTimer();
     
-    // Her saniye güncelle
     this.penaltyTimerInterval = setInterval(() => {
       this.updatePenaltyTimer();
     }, 1000);
@@ -1463,14 +1420,14 @@ class ReelsClimber {
     const totalDuration = 10 * 60 * 1000; // 10 dakika
     const progress = (remaining / totalDuration) * 100;
     
-    // Dakika ve saniye hesapla
+    // Calculate minutes and seconds
     const minutes = Math.floor(remaining / 60000);
     const seconds = Math.floor((remaining % 60000) / 1000);
     
     timerCircle.style.background = `conic-gradient(#EF4444 ${progress}%, rgba(239, 68, 68, 0.2) ${progress}%)`;
     timerText.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
     
-    // Ceza bitti
+    // Penalty ended
     if (remaining <= 0) {
       this.hidePenaltyNotification();
       this.isPenalized = false;
@@ -1493,7 +1450,7 @@ class ReelsClimber {
   }
 }
 
-// Instagram Reels sayfasında başlat
+// Start on Instagram Reels page
 if (window.location.hostname === 'www.instagram.com') {
   let climberInstance = null;
   
@@ -1506,7 +1463,7 @@ if (window.location.hostname === 'www.instagram.com') {
       }
     } else {
       console.log('📍 Reels sayfasında değilsiniz.');
-      // Reels sayfasında değilse level barını kaldır
+      // Remove level bar if not on Reels page
       const levelBar = document.getElementById('reels-climber-level-bar');
       if (levelBar) {
         levelBar.remove();
@@ -1517,14 +1474,13 @@ if (window.location.hostname === 'www.instagram.com') {
     }
   };
   
-  // Sayfa yüklendiğinde başlat
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startIfReels);
   } else {
     startIfReels();
   }
   
-  // URL değişimlerini izle (SPA navigation)
+  // Monitor URL changes (SPA navigation)
   let lastPath = window.location.pathname;
   setInterval(() => {
     if (window.location.pathname !== lastPath) {
