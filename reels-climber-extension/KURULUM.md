@@ -21,8 +21,6 @@
 3. **Kaydırmaya başla**: Yukarı aşağı scroll yap
 4. **Sağ üstte level barını gör**: 🏔️ Artık tırmanıyorsun!
 
-⚠️ **ÖNEMLİ**: Eklenti sadece Reels sayfalarında (`/reels/` URL'leri) çalışır!
-
 ## 📊 Dashboard'u Aç
 
 - Tarayıcının sağ üstündeki eklenti ikonuna tıkla
@@ -53,12 +51,7 @@
    - Ana feed'de çalışmaz, sadece Reels sayfasında
    - Sayfayı yenile (F5)
 
-2. **Başarımlar açılmıyor?**
-   - En az 50 piksel scroll yapman gerekiyor
-   - URL `/reels/` içermeli
-   - Dashboard'dan ilerlemeyi kontrol et
-
-3. **Metre çok yavaş mı artıyor?**
+2. **Metre çok yavaş mı artıyor?**
    - Aktif scroll yapman gerekiyor
 
 3. **Verileri sıfırlamak istiyorum**
