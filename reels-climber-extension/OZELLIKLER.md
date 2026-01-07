@@ -154,7 +154,7 @@ newDistance = targetDistance * percentage;
 // Tokyo: 8674000 * 0.05 = 433,700 m = 434 km
 ```
 
-### Storage
+### Depolama
 ```javascript
 chrome.storage.local.set({
   currentRoute: {
@@ -199,14 +199,14 @@ chrome.storage.local.set({
 
 ---
 
-## 🎮 Leaderboard'da Rotalar
+## 🎮 Lider Tablosunda'da Rotalar
 
-Leaderboard'da artık hangi rotayı tamamladığını gösterebilirsin:
+Lider Tablosunda'da artık hangi rotayı tamamladığını gösterebilirsin:
 - Kullanıcı adı
 - Toplam metre (hangi rotada olduğu önemli değil)
 - Seviye ve Reels sayısı
 
-**Gelecek özellik**: Rota bazlı ayrı leaderboard'lar!
+
 
 ---
 
@@ -224,17 +224,6 @@ Eğer rota sistemini kullanmak istemezsen:
 - Hiç rota seçme
 - Veya extension'ı yeniden yükle
 - Default olarak Everest aktif
-
----
-
-## 🔮 Gelecek Güncellemeler
-
-- [ ] Daha fazla ülke (Brezilya, Hindistan, Avustralya, vs.)
-- [ ] Özel turistik noktalar (Eyfel Kulesi, Özgürlük Heykeli, vs.)
-- [ ] Rota bazlı özel başarımlar
-- [ ] Rota geçmişi (hangi rotaları tamamladın)
-- [ ] Rota önerileri (AI tabanlı)
-- [ ] Rota paylaşma (arkadaşlarınla aynı rotayı tamamla)
 
 ---
 
