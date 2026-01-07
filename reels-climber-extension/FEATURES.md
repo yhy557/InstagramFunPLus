@@ -168,31 +168,6 @@ chrome.storage.local.set({
 });
 ```
 
-## 📖 Usage Scenarios
-
-### Scenario 1: Short Challenge
-```
-1. Select Bern → Zurich (310 km)
-2. Goal: 310,000 meters
-3. 5% achievement: 15,500 m = 15.5 km
-4. Scroll and finish quickly!
-```
-
-### Scenario 2: Medium Challenge
-```
-1. Select Berlin → Ankara (2,100 km)
-2. Goal: 2,100,000 meters
-3. 25% achievement: 525 km
-4. Can be completed in a few days
-```
-
-### Scenario 3: Epic Challenge
-```
-1. Select Ankara → Tokyo (8,674 km)
-2. Goal: 8,674,000 meters
-3. 50% achievement: 4,337 km
-4. Requires weeks of scrolling!
-```
 
 ---
 
