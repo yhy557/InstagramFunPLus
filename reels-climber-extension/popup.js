@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Distance matrix (in km) - Real distances via air travel
   const DISTANCES = {
-    // Türkiye başlangıçları
+    // Türkiye starts
     'turkey-ankara-japan-tokyo': 8674,
     'turkey-ankara-japan-osaka': 8820,
     'turkey-ankara-usa-washington': 8950,
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     'turkey-istanbul-germany-berlin': 1850,
     'turkey-istanbul-germany-munich': 1650,
     
-    // Norveç başlangıçları
+    // Norway starts
     'norway-oslo-japan-tokyo': 8770,
     'norway-oslo-japan-osaka': 8920,
     'norway-oslo-usa-washington': 6370,
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     'norway-bergen-turkey-ankara': 2950,
     'norway-bergen-turkey-istanbul': 2840,
     
-    // İsviçre başlangıçları
+    // Switzerland starts
     'switzerland-bern-japan-tokyo': 9700,
     'switzerland-bern-japan-osaka': 9850,
     'switzerland-bern-usa-washington': 6500,
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     'switzerland-zurich-turkey-ankara': 2250,
     'switzerland-zurich-turkey-istanbul': 2070,
     
-    // Japonya başlangıçları
+    // Japan starts
     'japan-tokyo-usa-washington': 11140,
     'japan-tokyo-usa-newyork': 10850,
     'japan-tokyo-norway-oslo': 8770,
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     'japan-osaka-turkey-ankara': 8820,
     'japan-osaka-turkey-istanbul': 9450,
     
-    // Amerika başlangıçları
+    // America starts
     'usa-washington-japan-tokyo': 11140,
     'usa-washington-japan-osaka': 11270,
     'usa-washington-norway-oslo': 6370,
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     'usa-newyork-turkey-ankara': 8670,
     'usa-newyork-turkey-istanbul': 8050,
     
-    // Almanya başlangıçları
+    // Germany starts
     'germany-berlin-japan-tokyo': 8920,
     'germany-berlin-japan-osaka': 9070,
     'germany-berlin-usa-washington': 6545,
@@ -244,27 +244,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const localLeaderboard = result.leaderboardData || [];
     const unlockedAchievements = new Set(result.unlockedAchievements || []);
     
-    // Online leaderboard'u da yükle ve birleştir
     chrome.storage.sync.get(['onlineLeaderboard'], (syncResult) => {
       const onlineLeaderboard = syncResult.onlineLeaderboard || [];
       
-      // Local ve online leaderboard'u birleştir (userID bazlı)
       function mergeLeaderboards(local, online) {
         const merged = {};
         
-        // Local'daki tüm kullanıcıları ekle
         local.forEach(user => {
           merged[user.userID] = user;
         });
         
-        // Online'daki kullanıcıları ekle/güncelle (daha güncel timestamp varsa)
         online.forEach(user => {
           if (!merged[user.userID] || merged[user.userID].timestamp < user.timestamp) {
             merged[user.userID] = user;
           }
         });
         
-        // Object'ten array'e çevir ve sırala
         return Object.values(merged)
           .sort((a, b) => b.meters - a.meters)
           .slice(0, 100);
@@ -278,10 +273,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         merged: mergedLeaderboard.length
       });
       
-      // Birleştirilmiş leaderboard'u kullan
+      
       const leaderboardData = mergedLeaderboard;
     
-    // Hedef mesafeyi belirle (rota varsa rota, yoksa Everest)
+    
     const targetHeight = currentRoute ? (currentRoute.distance * 1000) : EVEREST_HEIGHT;
     const targetName = currentRoute ? `${currentRoute.startCityName} → ${currentRoute.endCityName}` : 'Everest';
     
@@ -322,12 +317,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('progress-text').textContent = progressMessage;
     
     // Update achievements count
-    const everestAchievements = achievements.filter(a => !a.special && !a.hidden); // Gizli başarımları filtrele
+    const everestAchievements = achievements.filter(a => !a.special && !a.hidden); // Fİlter secret achievements
     const unlockedEverestCount = everestAchievements.filter(a => unlockedAchievements.has(a.id)).length;
     document.getElementById('achievements-count').textContent = 
       `${unlockedEverestCount}/${everestAchievements.length}`;
     
-    // Populate achievements grid (sadece gizli olmayanları göster)
+    // Populate achievements grid
     const achievementsGrid = document.getElementById('achievements-grid');
     achievementsGrid.innerHTML = '';
     
@@ -359,8 +354,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Display leaderboard (userID kullanarak - merged data ile)
     displayLeaderboard(leaderboardData, userID, Math.floor(metersClimbed));
-    }); // sync callback sonu
-  }); // local storage callback sonu
+    });
+  });
   
   // Display leaderboard
   function displayLeaderboard(leaderboardData, currentUserID, currentMeters) {
@@ -445,13 +440,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const usernameInput = document.getElementById('username-input');
   const saveUsernameBtn = document.getElementById('save-username-btn');
   
-  // Input değiştiğinde butonu aktif et
   usernameInput.addEventListener('input', (e) => {
     const value = e.target.value.trim();
     saveUsernameBtn.disabled = value.length === 0;
   });
   
-  // Enter tuşu ile kaydet
+  // Save ith enter button
   usernameInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -461,7 +455,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
   
-  // Buton ile kaydet
+  // Savw with button
   saveUsernameBtn.addEventListener('click', saveUsername);
   
   function saveUsername() {
@@ -472,11 +466,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
     
-    // UserID'yi al veya oluştur
+    // Get UserID or create
     chrome.storage.local.get(['userID', 'metersClimbed', 'currentLevel', 'reelsViewed', 'currentRoute'], (result) => {
       let userID = result.userID;
       
-      // UserID yoksa oluştur
       if (!userID) {
         userID = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         console.log('🆔 Yeni userID oluşturuldu:', userID);
@@ -487,15 +480,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       const reelsViewed = result.reelsViewed || 0;
       const currentRoute = result.currentRoute || null;
       
-      // UserID ve userName'i kaydet
+      // Save UserID and userName
       chrome.storage.local.set({ userID, userName }, () => {
         console.log('✅ Kullanıcı adı kaydedildi:', userName, 'UserID:', userID);
         
-        // Leaderboard'a ekle/güncelle
         chrome.storage.local.get(['leaderboardData'], (result) => {
           let leaderboard = result.leaderboardData || [];
           
-          // Bu userID ile mevcut entry var mı?
           const userIndex = leaderboard.findIndex(u => u.userID === userID);
           
           const userData = {
@@ -509,22 +500,17 @@ document.addEventListener('DOMContentLoaded', async () => {
           };
           
           if (userIndex >= 0) {
-            // Güncelle
             leaderboard[userIndex] = userData;
             console.log('🔄 Leaderboard güncellendi');
           } else {
-            // Yeni ekle
             leaderboard.push(userData);
             console.log('➕ Leaderboard\'a eklendi');
           }
           
-          // Sırala
           leaderboard.sort((a, b) => b.meters - a.meters);
           leaderboard = leaderboard.slice(0, 100);
           
-          // Kaydet ve göster
           chrome.storage.local.set({ leaderboardData: leaderboard }, () => {
-            // Online leaderboard'a da kaydet (sync)
             chrome.storage.sync.get(['onlineLeaderboard'], (syncResult) => {
               let onlineLeaderboard = syncResult.onlineLeaderboard || [];
               
@@ -546,7 +532,6 @@ document.addEventListener('DOMContentLoaded', async () => {
               });
             });
             
-            // Başarı mesajı
             const notification = document.createElement('div');
             notification.style.cssText = `
               position: fixed;
@@ -572,10 +557,8 @@ document.addEventListener('DOMContentLoaded', async () => {
               setTimeout(() => notification.remove(), 300);
             }, 2000);
             
-            // Leaderboard'u yeniden göster
             displayLeaderboard(leaderboard, userID, Math.floor(metersClimbed));
             
-            // Butonu kapat
             saveUsernameBtn.disabled = true;
           });
         });
