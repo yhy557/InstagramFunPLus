@@ -21,10 +21,10 @@ class ReelsClimber {
     // Pixel to meter conversion factor (1 meter ≈ 2000 pixels)
     this.pixelsPerMeter = 2000;
     
-    // Ses efektleri ayarı
-    this.soundEnabled = true;
-    
     // Sound effects setting
+    this.soundEnabled = true;
+
+    // Achievement definitions
     this.achievements = this.defineAchievements();
     this.unlockedAchievements = new Set();
     
@@ -32,12 +32,12 @@ class ReelsClimber {
   }
 
   generateUserID() {
-    // Benzersiz kullanıcı ID'si oluştur (değişmez)
+    // Generate a unique user ID (permanent)
     return 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   }
 
   defineAchievements() {
-    const EVEREST_HEIGHT = 8848; // metre
+    const EVEREST_HEIGHT = 8848; // meters
     
     return [
       // Everest Başarımları
